@@ -23,7 +23,7 @@ h1, h2{
 
 #encabezado{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 75px;
     width: 100vw;
