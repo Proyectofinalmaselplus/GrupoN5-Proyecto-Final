@@ -1,0 +1,73 @@
+#slider-container {
+    position: relative;
+    max-width: 90%; /* Ajusta a la anchura máxima que prefieras */
+    margin: auto;
+    display: flex; /* Usa flexbox para alinear los botones a los lados */
+    align-items: center; /* Alinea verticalmente */
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.1);
+}
+
+#slider {
+    overflow: hidden;
+    width: calc(100% - 120px); /* Resta el espacio que ocuparán los botones aproximadamente */
+    flex-grow: 1; /* Permite que el slider crezca y llene el espacio disponible */
+}
+
+#slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+#slider-wrapper section {
+    min-width: 100%; /* Cada sección del slider debe tener el ancho total del slider */
+    display: flex;
+    margin: 0 0; /* Agregado 'px' a las unidades */
+    max-width: 800px; /* ajusta según el tamaño deseado */
+}
+
+.slide-content {
+    display: flex; /* Habilita Flexbox */
+    justify-content: center; /* Centra los elementos hijos horizontalmente */
+    align-items: center; /* Centra los elementos hijos verticalmente */
+}
+
+.slide-text,
+.slide-image {
+    flex-basis: 50%; /* Define el ancho inicial de cada elemento hijo */
+}
+
+.slide-image img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block;
+    margin: 0 auto; /* Centra la imagen dentro de su contenedor */
+}
+
+
+button {
+    background-color: var(--azul-cielo-suave);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 24px;
+    z-index: 10;
+}
+
+#slide-left {
+    margin-right: -60px; /* Ajusta según el tamaño de tu botón */
+}
+
+#slide-right {
+    margin-left: -60px; /* Ajusta según el tamaño de tu botón */
+}
+
+h2, h3{
+    text-align: center;
+}
+
+p, h3{
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
