@@ -31,9 +31,10 @@
     align-items: center; /* Centra los elementos hijos verticalmente */
 }
 
+
 .slide-text,
 .slide-image {
-    flex-basis: 50%; /* Define el ancho inicial de cada elemento hijo */
+    flex-basis: 40%; /* Define el ancho inicial de cada elemento hijo */
 }
 
 .slide-image img {
@@ -68,6 +69,42 @@ h2, h3{
 
 p, h3{
     width: 80%;
-    text-align: center;
+    text-align: justify;
     margin: 0 auto;
+    padding: 15px 0;
 }
+
+@media (max-width: 768px) {
+    #slider-container {
+        flex-direction: row; /* Mantiene la disposición horizontal */
+        justify-content: space-between; /* Asegura que haya espacio entre los elementos */
+    }
+
+    #slider {
+        width: calc(100% - 100px); /* Ajusta el ancho del slider para dejar espacio a los botones */
+    }
+
+    .slide-content {
+        flex-direction: column; /* Mantiene el contenido del slide en columna para mejor visualización */
+    }
+
+    .slide-image img {
+        width: 100%; /* Hace que las imágenes sean completamente responsivas dentro de su contenedor */
+    }
+
+    button {
+        margin: 0 10px; /* Reduce el margen lateral de los botones para ajustarse a pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    #slider {
+        width: calc(100% - 60px); /* Ajusta aún más el ancho del slider para pantallas muy pequeñas */
+    }
+
+    button {
+        font-size: 16px; /* Reduce el tamaño de la fuente de los botones para ahorrar espacio */
+        padding: 5px 10px; /* Reduce el padding de los botones para que ocupen menos espacio */
+    }
+}
+

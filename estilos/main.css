@@ -7,7 +7,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 #main, body{
@@ -59,4 +59,22 @@ ul li a:hover{
 
 footer{
     color: var(--gris-plata);
+}
+
+
+#btnSubir {
+    position: fixed; 
+    bottom: 20px; 
+    right: 75px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    background-color: rgba(0, 0, 0, 0.9); 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+
+#btnSubir:hover {
+    background-color: rgba(0, 0, 0, 0.7);
 }
