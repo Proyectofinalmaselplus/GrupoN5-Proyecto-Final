@@ -1,0 +1,11 @@
+:root {
+    --gris-plata: #C0C0C0;
+    --azul-cielo-suave: #87CEEB;
+  }
+
+#slogan{
+    text-align: center;
+    color: var(--gris-plata);
+    font-size: 18px;
+}
+
