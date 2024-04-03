@@ -29,6 +29,7 @@ h1, h2{
     width: 100vw;
     border-bottom: 1.2px solid var(--gris-plata);
     padding: 0 50px;
+    background-color: #fff;
 }
 
 ul{
@@ -53,5 +54,9 @@ h1{
 }
 
 ul li a:hover{
+    color: var(--gris-plata);
+}
+
+footer{
     color: var(--gris-plata);
 }

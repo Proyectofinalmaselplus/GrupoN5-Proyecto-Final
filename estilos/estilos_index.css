@@ -4,7 +4,7 @@
     margin: auto;
     display: flex; /* Usa flexbox para alinear los botones a los lados */
     align-items: center; /* Alinea verticalmente */
-    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.1);
 }
 
 #slider {
@@ -46,7 +46,7 @@
 
 button {
     background-color: var(--azul-cielo-suave);
-    color: white;
+    color: #fff;
     border: none;
     cursor: pointer;
     padding: 10px 20px;
