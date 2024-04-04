@@ -1,10 +1,10 @@
 .galeria {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos imágenes por línea */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
-    margin: 0 auto; /* Centra la galería */
+    margin: 0 auto;
 }
 
 .galeria section {
@@ -13,62 +13,55 @@
     border: 1px solid var(--gris-plata);
     border-radius: 5px;
     overflow: hidden;
-    height: auto; /* Altura automática para acomodar el contenido */
+    height: auto;
 }
 
 .galeria img {
     width: 100%;
-    height: 500px; /* Fijar una altura estándar para todas las imágenes */
+    height: 500px;
     object-fit:contain;
 }
 
 .texto-seccion {
-    border-top: 2px solid var(--gris-plata); /* Línea que separa la imagen del texto */
+    border-top: 2px solid var(--gris-plata);
     padding: 10px;
     background-color: #fff;
-    flex: 1; /* Permite que el contenedor de texto crezca para ocupar el espacio restante */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el texto verticalmente */
+    justify-content: center;
 }
 
 .galeria h2, .galeria p {
-    margin: 0; /* Elimina los márgenes por defecto */
-    text-align: center; /* Centra el texto horizontalmente */
+    margin: 0;
+    text-align: center;
 }
 
-/* Asegurar que los títulos y párrafos tienen la misma altura */
 .galeria h2 {
-    min-height: 3em; /* Ajustar según sea necesario */
+    min-height: 3em;
 }
 
 .galeria p {
-    min-height: 5em; /* Ajustar según sea necesario */
+    min-height: 5em;
 }
 
-/* Pantallas grandes - mantenemos la configuración actual de dos columnas */
 @media (min-width: 1024px) {
     .galeria {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Tabletas y pantallas medianas - cambiamos a una sola columna */
 @media (max-width: 1023px) {
     .galeria {
         grid-template-columns: 1fr;
     }
 }
 
-/* Pantallas muy pequeñas - también una sola columna, con ajustes adicionales si son necesarios */
 @media (max-width: 600px) {
     .galeria img {
-        height: auto; /* Hace que la altura de las imágenes sea automática para mantener la proporción */
+        height: auto;
     }
 
-
-
-    /* Ajustar texto para mejorar legibilidad en dispositivos pequeños */
     .galeria h2, .galeria p {
         padding: 5px;
     }

@@ -26,34 +26,34 @@ img{
 
 p {
   text-align: justify;
-  margin-top: 20px; /* Aumenta el margen superior */
-  margin-bottom: 20px; /* Aumenta el margen inferior */
-  padding: 10px; /* Añade relleno alrededor del texto dentro del párrafo */
-  line-height: 1.6; /* Aumenta el espaciado entre líneas de texto */
-  word-wrap: break-word; /* Asegura que las palabras largas no desborden el contenedor */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  line-height: 1.6;
+  word-wrap: break-word;
 }
 
 @media (max-width: 768px) {
   #about-us {
-    width: 90%; /* Hace que el contenedor sea un poco más ancho en pantallas pequeñas */
+    width: 90%;
   }
 
   img {
-    width: 100px; /* Hace la imagen más pequeña para que encaje mejor */
-    margin: 20px auto; /* Centra la imagen y reduce el margen */
+    width: 100px;
+    margin: 20px auto;
   }
 
   p, #slogan {
-    font-size: 18px; /* Ajusta el tamaño del texto para que sea legible */
+    font-size: 18px;
   }
 }
 
 @media (max-width: 480px) {
   #about-us {
-    width: 95%; /* Permite que el texto ocupe más espacio */
+    width: 95%;
   }
 
   p, #slogan {
-    font-size: 16px; /* Reduce aún más el tamaño del texto para pequeñas pantallas */
+    font-size: 16px;
   }
 }
