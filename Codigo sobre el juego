@@ -1,0 +1,141 @@
+import pygame
+import sys
+import random
+
+# Inicializar pygame
+pygame.init()
+
+# Definir colores
+BLANCO = (255, 255, 255)
+NEGRO = (0, 0, 0)
+VERDE = (0, 255, 0)
+
+# Tamaño de la ventana y otros parámetros
+ANCHO = 400
+ALTO = 300
+FPS = 10
+TAMANO_CELDA = 20
+
+# Definir la fuente
+fuente = pygame.font.SysFont(None, 25)
+
+# Función para mostrar texto en la pantalla
+def mostrar_texto(texto, color, x, y):
+    pantalla_texto = fuente.render(texto, True, color)
+    ventana.blit(pantalla_texto, [x, y])
+
+# Función para dibujar la serpiente en la pantalla
+def dibujar_serpiente(snake_lista):
+    for bloque in snake_lista:
+        pygame.draw.rect(ventana, VERDE, [bloque[0], bloque[1], TAMANO_CELDA, TAMANO_CELDA])
+
+# Función principal del juego
+def juego():
+    # Variables iniciales del juego
+    snake_x = ANCHO / 2
+    snake_y = ALTO / 2
+    snake_lista = []
+    snake_longitud = 1
+    direccion_x = 0
+    direccion_y = 0
+    comida_x = round(random.randrange(0, ANCHO - TAMANO_CELDA) / TAMANO_CELDA) * TAMANO_CELDA
+    comida_y = round(random.randrange(0, ALTO - TAMANO_CELDA) / TAMANO_CELDA) * TAMANO_CELDA
+    score = 0
+
+    # Bucle principal del juego
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            # Control de dirección de la serpiente
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT and direccion_x != TAMANO_CELDA:
+                    direccion_x = -TAMANO_CELDA
+                    direccion_y = 0
+                elif event.key == pygame.K_RIGHT and direccion_x != -TAMANO_CELDA:
+                    direccion_x = TAMANO_CELDA
+                    direccion_y = 0
+                elif event.key == pygame.K_UP and direccion_y != TAMANO_CELDA:
+                    direccion_y = -TAMANO_CELDA
+                    direccion_x = 0
+                elif event.key == pygame.K_DOWN and direccion_y != -TAMANO_CELDA:
+                    direccion_y = TAMANO_CELDA
+                    direccion_x = 0
+
+        # Actualizar posición de la serpiente
+        snake_x = snake_x + direccion_x
+        snake_y = snake_y + direccion_y
+
+        # Comprobar colisiones con los bordes de la pantalla
+        if snake_x >= ANCHO or snake_x < 0 or snake_y >= ALTO or snake_y < 0:
+            juego_terminado(score)
+
+        # Comprobar colisiones con la comida
+        if (comida_x <= snake_x < comida_x + TAMANO_CELDA) and (comida_y <= snake_y < comida_y + TAMANO_CELDA):
+            comida_x = round(random.randrange(0, ANCHO - TAMANO_CELDA) / TAMANO_CELDA) * TAMANO_CELDA
+            comida_y = round(random.randrange(0, ALTO - TAMANO_CELDA) / TAMANO_CELDA) * TAMANO_CELDA
+            snake_longitud = snake_longitud + 1
+            score = score + 1
+
+        # Dibujar elementos en la pantalla
+        ventana.fill(NEGRO)
+        pygame.draw.rect(ventana, BLANCO, [comida_x, comida_y, TAMANO_CELDA, TAMANO_CELDA])
+        snake_cabeza = []
+        snake_cabeza.append(snake_x)
+        snake_cabeza.append(snake_y)
+        snake_lista.append(snake_cabeza)
+        if len(snake_lista) > snake_longitud:
+            del snake_lista[0]
+        dibujar_serpiente(snake_lista)
+        mostrar_texto("Puntuación: " + str(score), BLANCO, 10, 10)
+        pygame.display.update()
+
+        # Controlar la velocidad del juego
+        reloj.tick(FPS)
+
+# Función para mostrar el mensaje de juego terminado
+def juego_terminado(puntuacion):
+    ventana.fill(NEGRO)
+    mostrar_texto("Juego terminado", BLANCO, ANCHO/2 - 100, ALTO/2 - 30)
+    mostrar_texto("Puntuación: " + str(puntuacion), BLANCO, ANCHO/2 - 90, ALTO/2 + 10)
+    mostrar_texto("Presiona 'R' para jugar de nuevo o 'Q' para salir", BLANCO, ANCHO/2 - 180, ALTO/2 + 50)
+    pygame.display.update()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    juego()
+                elif event.key == pygame.K_q:
+                    pygame.quit()
+                    sys.exit()
+
+# Inicializar la ventana y el reloj
+ventana = pygame.display.set_mode((ANCHO, ALTO))
+pygame.display.set_caption("Vibora")
+reloj = pygame.time.Clock()
+
+# Menú de inicio
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = pygame.mouse.get_pos()
+            if 150 <= x <= 250 and 150 <= y <= 190:
+                juego()
+            elif 150 <= x <= 250 and 200 <= y <= 240:
+                pygame.quit()
+                sys.exit()
+
+    ventana.fill(NEGRO)
+    pygame.draw.rect(ventana, BLANCO, [150, 150, 100, 40])
+    pygame.draw.rect(ventana, BLANCO, [150, 200, 100, 40])
+    mostrar_texto("Iniciar", NEGRO, 170, 160)
+    mostrar_texto("Salir", NEGRO, 170, 210)
+    pygame.display.update()
